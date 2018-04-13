@@ -12,9 +12,11 @@ class Api(object):
         from .workspace import WorkspaceList
         from .project import ProjectList
         from .reports import Reports
+        from .time_entries import TimeEntryList
 
         self.session = Session(self.BASE_URL, api_token)
         self.clients = ClientList(self)
         self.workspaces = WorkspaceList(self)
         self.projects = ProjectList(self)
         self.reports = Reports(api_token)
+        self.time_entries = TimeEntryList(self)

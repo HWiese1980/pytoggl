@@ -13,6 +13,7 @@ class ObjectList(object):
             self.url = url
         self.api = api
         self._instance_cache = {}
+        self.filters = {}
 
     def list(self):
         return list(self)
@@ -24,8 +25,14 @@ class ObjectList(object):
         if not hasattr(self, '_datalist'):
             self._datalist = self.api.session.get(self.url)
 
-        for data in self._datalist:
-            yield self.get_instance_cls()(self.api, **data)
+        for data in self._datalist or []:
+            instance = self.get_instance_cls()(self.api, **data)
+            if any(self.filters):
+                for f in self.filters:
+                    if f in data and data[f] == self.filters[f]:
+                        yield instance
+            else:
+                yield instance
 
     def get(self, object_id):
         return self[object_id]
