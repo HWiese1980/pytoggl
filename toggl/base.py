@@ -67,7 +67,7 @@ class Object(object):
         self._update_attrs(kwargs)
 
     def _update_attrs(self, attrs):
-        for k, v in attrs.iteritems():
+        for k, v in iter(attrs.items()):
             try:
                 v = iso8601.parse_date(v)
                 attrs[k] = v
