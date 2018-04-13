@@ -1,4 +1,4 @@
-from urllib.parse import urlencode
+from urllib import urlencode
 import dateutil.parser as parser
 from datetime import datetime
 
