@@ -1,4 +1,4 @@
-from urllib import urlencode
+from urllib.parse import urlencode
 from datetime import datetime
 
 from .base import ObjectList, Object, cached_property
