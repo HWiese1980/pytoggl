@@ -27,6 +27,9 @@ class TimeEntry(Object):
 
     """
 
+    def get_instance_url(self):
+        return "time_entries"
+
     @cached_property
     def name(self):
         return self.description
