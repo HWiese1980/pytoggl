@@ -17,11 +17,11 @@ class Session(object):
 
     def _exec(self, method, url, *args, **kwargs):
         try:
-            log.debug("[req]: %s?%s [data: %s]" % (self.base_url + url,
-                urlencode(kwargs.get('params', {})), kwargs.get('data')))
+            # log.debug("[req]: %s?%s [data: %s]" % (self.base_url + url,
+            #     urlencode(kwargs.get('params', {})), kwargs.get('data')))
             response = method(self.base_url + url, *args, **kwargs)
-            log.debug("[resp %d]: %s" % (response.status_code,
-                repr(response.text)))
+            # log.debug("[resp %d]: %s" % (response.status_code,
+            #     repr(response.text)))
         except Exception as ex:
             log.debug("[err]: %s" % str(ex))
             raise Error(str(ex))
